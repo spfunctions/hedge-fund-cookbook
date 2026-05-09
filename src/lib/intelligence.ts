@@ -24,11 +24,14 @@ export async function readJson<T>(path: string, params: Record<string, QueryValu
 
 export const intelligence = {
   screen: (params: Record<string, QueryValue> = {}) => readJson<Record<string, unknown>>('/api/public/screen', params),
+  screenByTickers: (params: Record<string, QueryValue> = {}) => readJson<Record<string, unknown>>('/api/public/screen-by-tickers', params),
   regime: (params: Record<string, QueryValue> = {}) => readJson<Record<string, unknown>>('/api/public/regime/scan', params),
   calendar: (params: Record<string, QueryValue> = {}) => readJson<Record<string, unknown>>('/api/public/calendar', params),
   index: (params: Record<string, QueryValue> = {}) => readJson<Record<string, unknown>>('/api/public/index', params),
-  crossVenuePairs: (params: Record<string, QueryValue> = {}) => readJson<Record<string, unknown>>('/api/public/cross-venue/pairs', params),
-  crossVenueStats: (params: Record<string, QueryValue> = {}) => readJson<Record<string, unknown>>('/api/public/cross-venue/stats', params),
+  indexHistory: (params: Record<string, QueryValue> = {}) => readJson<Record<string, unknown>>('/api/public/index/history', params),
+  yieldCurves: (params: Record<string, QueryValue> = {}) => readJson<Record<string, unknown>>('/api/public/yield-curves', params),
+  calibration: (params: Record<string, QueryValue> = {}) => readJson<Record<string, unknown>>('/api/public/calibration', params),
+  contagion: (params: Record<string, QueryValue> = {}) => readJson<Record<string, unknown>>('/api/public/contagion', params),
 }
 
 export function arrayField(value: unknown): unknown[] {

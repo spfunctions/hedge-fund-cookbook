@@ -1,13 +1,13 @@
 import http from 'node:http'
 import { run as macro } from './cookbooks/macro-regime-monitor.js'
-import { run as crossVenue } from './cookbooks/cross-venue-arb-scanner.js'
+import { run as eventRisk } from './cookbooks/event-risk-book.js'
 import { run as electionDesk } from './cookbooks/election-policy-desk.js'
 import { run as portfolioRisk } from './cookbooks/portfolio-risk-sentinel.js'
 import { run as thesisReplay } from './cookbooks/thesis-replay-monitor.js'
 
 const routes: Record<string, () => Promise<unknown>> = {
   '/cookbooks/macro': macro,
-  '/cookbooks/cross-venue': crossVenue,
+  '/cookbooks/event-risk': eventRisk,
   '/cookbooks/election-desk': electionDesk,
   '/cookbooks/portfolio-risk': portfolioRisk,
   '/cookbooks/thesis-replay': thesisReplay,

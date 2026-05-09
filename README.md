@@ -1,8 +1,8 @@
-# SimpleFunctions Hedge Fund Cookbook
+# SimpleFunctions Institutional Research Cookbook
 
 Self-hostable TypeScript examples for building market-intelligence applications with `@spfunctions/sdk` and `@spfunctions/agent`.
 
-These examples are intentionally read-first. They do not place trades, do not expose browser API keys, and do not require SimpleFunctions-hosted runtime state. Run them from your own server, job runner, notebook host, or agent harness with a SimpleFunctions API key.
+This repo is intentionally written for institutional research, risk, and policy workflows: morning risk packs, catalyst books, election/policy desks, portfolio sentinels, and auditable thesis replay. It is not a trading bot repo. It does not place orders, does not expose browser API keys, and does not require SimpleFunctions-hosted runtime state. Run the examples from your own server, job runner, notebook host, agent harness, or internal dashboard with a SimpleFunctions API key.
 
 ## Install
 
@@ -24,11 +24,13 @@ Some examples use `src/lib/intelligence.ts` for newly promoted intelligence endp
 
 | Script | Use case | Primary SimpleFunctions surfaces |
 | --- | --- | --- |
-| `npm run macro` | Macro regime monitor for a PM or risk team | `world.read`, `index.current`, `regime.scan`, `calendar.list` |
-| `npm run cross-venue` | Cross-venue arb and divergence queue | `crossvenue.pairs`, `crossvenue.stats`, `market.inspect` |
-| `npm run election-desk` | Election or policy-office event desk | `calendar.list`, `markets.search`, `markets.screen`, `gov.query` |
-| `npm run portfolio-risk` | Portfolio and watchlist sentinel | `portfolio.*`, `watchlists.list`, `alerts.list` |
-| `npm run thesis-replay` | Thesis monitor with trace/replay | `theses.*`, `SimpleFunctionsAgent`, `FileTraceStore` |
+| `npm run macro` | Global macro regime pack for a PM/risk meeting | `world.read`, `index.current`, `index.history`, `regime.scan`, `yieldcurves.list`, `calendar.list` |
+| `npm run event-risk` | Event-risk book for rates, energy, geopolitics, and policy catalysts | `markets.screen`, `regime.scan`, `calendar.list`, `contagion.scan`, `market.inspect` |
+| `npm run election-desk` | Policy/election desk briefing with catalyst, market, and research context | `calendar.list`, `markets.search`, `markets.screen`, `gov.query` |
+| `npm run portfolio-risk` | Portfolio and watchlist sentinel with internal handoff payloads | `portfolio.*`, `watchlists.list`, `alerts.list`, `world.read` |
+| `npm run thesis-replay` | Auditable thesis monitor with local trace/replay | `theses.*`, `SimpleFunctionsAgent`, `FileTraceStore` |
+
+Each script returns structured JSON intended for downstream systems: a human briefing, a queue, a risk memo, a Slack/PagerDuty payload, or an internal web app response. The examples keep the domain decisions explicit so your own compliance, risk, and execution systems can own the final action.
 
 ## Smoke
 
@@ -45,6 +47,7 @@ Without `SF_API_KEY`, `npm run smoke` verifies package imports and exits cleanly
 npm run server
 curl http://localhost:8787/health
 curl http://localhost:8787/cookbooks/macro
+curl http://localhost:8787/cookbooks/event-risk
 ```
 
 The server is intentionally minimal and uses Node's built-in HTTP server. In production, put the same cookbook functions behind your own auth, queue, scheduler, or internal dashboard.
@@ -56,4 +59,5 @@ The server is intentionally minimal and uses Node's built-in HTTP server. In pro
 - No venue order placement.
 - No dependency on the `sf` CLI.
 - Agent SDK calls use canonical strict tools from `/api/contracts/tools`, not broad `/api/tools` aliases.
-- Cross-venue and screening outputs are research signals. They are not investment advice or execution instructions.
+- Outputs are research signals. They are not investment advice or execution instructions.
+- Use your own approvals, suitability checks, compliance retention, market-data licenses, and production observability before making any downstream decision.
