@@ -9,7 +9,7 @@
     "smoke": "tsx src/smoke.ts",
     "server": "tsx src/server.ts",
     "macro": "tsx src/cookbooks/macro-regime-monitor.ts",
-    "cross-venue": "tsx src/cookbooks/cross-venue-arb-scanner.ts",
+    "event-risk": "tsx src/cookbooks/event-risk-book.ts",
     "election-desk": "tsx src/cookbooks/election-policy-desk.ts",
     "portfolio-risk": "tsx src/cookbooks/portfolio-risk-sentinel.ts",
     "thesis-replay": "tsx src/cookbooks/thesis-replay-monitor.ts"
