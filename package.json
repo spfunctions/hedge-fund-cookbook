@@ -1,0 +1,30 @@
+{
+  "name": "@spfunctions/hedge-fund-cookbook",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Self-hostable SimpleFunctions SDK and Agent SDK cookbook examples for funds, macro desks, and research teams.",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "smoke": "tsx src/smoke.ts",
+    "server": "tsx src/server.ts",
+    "macro": "tsx src/cookbooks/macro-regime-monitor.ts",
+    "cross-venue": "tsx src/cookbooks/cross-venue-arb-scanner.ts",
+    "election-desk": "tsx src/cookbooks/election-policy-desk.ts",
+    "portfolio-risk": "tsx src/cookbooks/portfolio-risk-sentinel.ts",
+    "thesis-replay": "tsx src/cookbooks/thesis-replay-monitor.ts"
+  },
+  "dependencies": {
+    "@spfunctions/agent": "0.1.0-alpha.0",
+    "@spfunctions/sdk": "0.1.0-alpha.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}
